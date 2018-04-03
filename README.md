@@ -1,2 +1,2 @@
 # rnums
-A simple proof of concept based upon the Residue Number System.
+RNums is a simple library based upon the residue number system. It contains all the basic operations of addition, subtraction, multiplication and division. It also contains functions for the additive inverse and multiplicative inverse of a number. This library also contains a method for base extension of a RNS number as well as conversion from RNS to Binary as well as Binary to RNS using the Chinese Remainder Theorem.
