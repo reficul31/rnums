@@ -130,25 +130,25 @@ func TestAdd(testCase *testing.T) {
 }
 
 // Test the multiplicative inverse of a RNS number
-// func TestMultiplicativeInverse(testCase *testing.T) {
-// 	testCase.Log("To test the multiplicative inverse of a number")
+func TestMultiplicativeInverse(testCase *testing.T) {
+	testCase.Log("To test the multiplicative inverse of a number")
 
-// 	system := NewSystem(8)
-// 	a := system.BinaryToRNS(-58.23)
-// 	aInv := system.MultiplicativeInverse(a)
+	system := NewSystem(8)
+	a := system.BinaryToRNS(-58.23)
+	aInv := system.MultiplicativeInverse(a)
 
-// 	if aInv.precision != a.precision {
-// 		testCase.Errorf("RNS Error: Precision of Multiplicative Inverse not accurate")
-// 	}
+	if aInv.precision != a.precision {
+		testCase.Errorf("RNS Error: Precision of Multiplicative Inverse not accurate")
+	}
 
-// 	product := system.Multiply(a, aInv)
-// 	var fragments = []int64{1, 1, 1, 1, 1, 1, 1, 1}
-// 	for index, fragment := range fragments {
-// 		if fragment != product.fragments[index] {
-// 			testCase.Errorf("RNS Error: Incorrect modulus values given back")
-// 		}
-// 	}
-// }
+	product := system.Multiply(a, aInv)
+	var fragments = []int64{1, 1, 1, 1, 1, 1, 1, 1}
+	for index, fragment := range fragments {
+		if fragment != product.fragments[index] {
+			testCase.Errorf("RNS Error: Incorrect modulus values given back")
+		}
+	}
+}
 
 // Test the additive inverse of a RNS number
 func TestAdditiveInverse(testCase *testing.T) {
@@ -172,24 +172,24 @@ func TestAdditiveInverse(testCase *testing.T) {
 }
 
 // Test the division of two RNS numbers
-// func TestDivision(testCase *testing.T) {
-// 	testCase.Log("To test the division of two numbers")
+func TestDivision(testCase *testing.T) {
+	testCase.Log("To test the division of two numbers")
 
-// 	system := NewSystem(8)
-// 	a := system.BinaryToRNS(4)
-// 	b := system.BinaryToRNS(2)
-// 	result := system.BinaryToRNS(2)
+	system := NewSystem(8)
+	a := system.BinaryToRNS(4)
+	b := system.BinaryToRNS(2)
+	result := system.BinaryToRNS(2)
 
-// 	div := system.Divide(a, b)
-// 	if div.precision != 0 {
-// 		testCase.Errorf("RNS Error: Precision of division not accurate")
-// 	}
-// 	for index := range result.fragments {
-// 		if div.fragments[index] != result.fragments[index] {
-// 			testCase.Errorf("RNS Error: Division was unsuccessful")
-// 		}
-// 	}
-// }
+	div := system.Divide(a, b)
+	if div.precision != 0 {
+		testCase.Errorf("RNS Error: Precision of division not accurate")
+	}
+	for index := range result.fragments {
+		if div.fragments[index] != result.fragments[index] {
+			testCase.Errorf("RNS Error: Division was unsuccessful")
+		}
+	}
+}
 
 // Test the subtraction of two RNS numbers
 func TestSubtract(testCase *testing.T) {
