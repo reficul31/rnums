@@ -1,4 +1,4 @@
-package rns
+package rnums
 
 // System will contain all the member functions of RNS
 type System struct {
