@@ -7,7 +7,7 @@ import (
 )
 
 // BaseExtension regenerates the base 10 for a RNS number
-func (system System) BaseExtension(a *RNS) *RNS {
+func (system System) BaseExtension(a *RNS, extension int64) *RNS {
 	sum := []int64{0, 0}
 	redundant := system.mods[len(system.mods)-2]
 	for i := 0; i < len(system.mods)-2; i++ {
@@ -15,7 +15,7 @@ func (system System) BaseExtension(a *RNS) *RNS {
 		sum[1] = sum[1] + (system.MMinv[i][1]*a.fragments[i])%10
 	}
 	sum[0] = sum[0] % redundant
-	sum[1] = sum[1] % 10
+	sum[1] = sum[1] % extension
 
 	multiplier := (system.MmodRedInv * (sum[0] - a.fragments[len(system.mods)-2])) % system.mods[len(system.mods)-2]
 	for multiplier < 0 {

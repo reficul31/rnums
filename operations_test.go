@@ -8,11 +8,12 @@ func TestBaseExtension(testCase *testing.T) {
 
 	redundant := int64(23)
 	system := NewSystemFromMods([]int64{3, 7, 11, 13}, redundant)
+	extension := int64(10)
 	for num := int64(0); num < system.M; num++ {
 		a := system.BinaryToRNS(float64(num))
-		a = system.BaseExtension(a)
+		a = system.BaseExtension(a, extension)
 
-		if a.fragments[len(system.mods)-1] != num%10 {
+		if a.fragments[len(system.mods)-1] != num%extension {
 			testCase.Errorf("RNS Error: Base correction incorrect for %d", num)
 		}
 	}
