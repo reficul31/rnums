@@ -10,8 +10,9 @@ func TestNewSystem(testCase *testing.T) {
 
 	numOfMods := 4
 	redundant := int64(23)
+	extension := int64(10)
 
-	system := NewSystem(numOfMods, redundant)
+	system := NewSystem(numOfMods, redundant, extension)
 	if len(system.mods) != numOfMods+2 {
 		testCase.Errorf("RNS Error: System not assigned the correct value")
 	}
@@ -26,8 +27,9 @@ func TestNewSystemFromMods(testCase *testing.T) {
 
 	mods := []int64{3, 11, 13, 17}
 	redundant := int64(23)
+	extension := int64(10)
 
-	system := NewSystemFromMods(mods, redundant)
+	system := NewSystemFromMods(mods, redundant, extension)
 	if len(system.mods) != len(mods)+2 {
 		testCase.Errorf("RNS Error: System not assigned the correct value")
 	}

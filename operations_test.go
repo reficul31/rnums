@@ -7,8 +7,9 @@ func TestBaseExtension(testCase *testing.T) {
 	testCase.Log("To test that the base extension loads the base 10")
 
 	redundant := int64(23)
-	system := NewSystemFromMods([]int64{3, 7, 11, 13}, redundant)
 	extension := int64(10)
+	system := NewSystemFromMods([]int64{3, 7, 11, 13}, redundant, extension)
+
 	for num := int64(0); num < system.M; num++ {
 		a := system.BinaryToRNS(float64(num))
 		a = system.BaseExtension(a, extension)
@@ -24,7 +25,9 @@ func TestBinaryToRNS(testCase *testing.T) {
 	testCase.Log("To test the binary to RNS conversion function")
 
 	redundant := int64(23)
-	system := NewSystem(8, redundant)
+	extension := int64(10)
+
+	system := NewSystem(8, redundant, extension)
 	rns := system.BinaryToRNS(-15.64)
 
 	if rns.precision != -2 {
@@ -49,7 +52,9 @@ func TestRNSToBinary(testCase *testing.T) {
 
 	redundant := int64(23)
 	number := -10.64
-	system := NewSystem(8, redundant)
+	extension := int64(10)
+
+	system := NewSystem(8, redundant, extension)
 	rns := system.BinaryToRNS(number)
 	result := system.RNSToBinary(rns)
 
@@ -63,7 +68,9 @@ func TestMultiply(testCase *testing.T) {
 	testCase.Log("To test the multiplication of two RNS numbers")
 
 	redundant := int64(23)
-	system := NewSystem(8, redundant)
+	extension := int64(10)
+
+	system := NewSystem(8, redundant, extension)
 	a := system.BinaryToRNS(3.73)
 	b := system.BinaryToRNS(-10.6)
 	c := system.BinaryToRNS(-39.538)
@@ -89,7 +96,9 @@ func TestAdd(testCase *testing.T) {
 	testCase.Log("To test addition of two RNS numbers")
 
 	redundant := int64(23)
-	system := NewSystem(8, redundant)
+	extension := int64(10)
+
+	system := NewSystem(8, redundant, extension)
 	a := system.BinaryToRNS(3.8)
 	b := system.BinaryToRNS(10.2)
 	c := system.BinaryToRNS(140)
@@ -110,7 +119,9 @@ func TestMultiplicativeInverse(testCase *testing.T) {
 	testCase.Log("To test the multiplicative inverse of a number")
 
 	redundant := int64(23)
-	system := NewSystem(8, redundant)
+	extension := int64(10)
+
+	system := NewSystem(8, redundant, extension)
 	a := system.BinaryToRNS(-58.23)
 	aInv := system.MultiplicativeInverse(a)
 
@@ -132,7 +143,9 @@ func TestAdditiveInverse(testCase *testing.T) {
 	testCase.Log("To test the additive inverse of a number")
 
 	redundant := int64(23)
-	system := NewSystem(8, redundant)
+	extension := int64(10)
+
+	system := NewSystem(8, redundant, extension)
 	a := system.BinaryToRNS(10.64)
 	aInv := system.AdditiveInverse(a)
 
@@ -154,7 +167,9 @@ func TestDivision(testCase *testing.T) {
 	testCase.Log("To test the division of two numbers")
 
 	redundant := int64(23)
-	system := NewSystem(8, redundant)
+	extension := int64(10)
+
+	system := NewSystem(8, redundant, extension)
 	a := system.BinaryToRNS(4)
 	b := system.BinaryToRNS(2)
 	result := system.BinaryToRNS(2)
@@ -175,7 +190,9 @@ func TestSubtract(testCase *testing.T) {
 	testCase.Log("To test the subtraction of two numbers")
 
 	redundant := int64(23)
-	system := NewSystem(8, redundant)
+	extension := int64(10)
+
+	system := NewSystem(8, redundant, extension)
 	a := system.BinaryToRNS(20.643)
 	b := system.BinaryToRNS(12.789)
 	result := system.BinaryToRNS(7.85400)

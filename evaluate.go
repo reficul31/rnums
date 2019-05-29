@@ -4,7 +4,7 @@ package rnums
 func EvaluateRedundant(mods []int64, redundant int64, extension int64) ([]int64, float64) {
 	var missed = float64(0)
 	var wrong []int64
-	system := NewSystemFromMods(mods, redundant)
+	system := NewSystemFromMods(mods, redundant, extension)
 	for num := int64(0); num < system.M; num++ {
 		a := system.BinaryToRNS(float64(num))
 		a = system.BaseExtension(a, extension)

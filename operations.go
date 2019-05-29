@@ -12,7 +12,7 @@ func (system System) BaseExtension(a *RNS, extension int64) *RNS {
 	redundant := system.mods[len(system.mods)-2]
 	for i := 0; i < len(system.mods)-2; i++ {
 		sum[0] = sum[0] + (system.MMinv[i][0]*a.fragments[i])%redundant
-		sum[1] = sum[1] + (system.MMinv[i][1]*a.fragments[i])%10
+		sum[1] = sum[1] + (system.MMinv[i][1]*a.fragments[i])%extension
 	}
 	sum[0] = sum[0] % redundant
 	sum[1] = sum[1] % extension
@@ -21,9 +21,9 @@ func (system System) BaseExtension(a *RNS, extension int64) *RNS {
 	for multiplier < 0 {
 		multiplier = multiplier + system.mods[len(system.mods)-2]
 	}
-	a.fragments[len(system.mods)-1] = sum[1] - multiplier*system.MmodRedAnd10[1]
+	a.fragments[len(system.mods)-1] = sum[1] - multiplier*system.MmodRedAndExt[1]
 	for a.fragments[len(system.mods)-1] < 0 {
-		a.fragments[len(system.mods)-1] = a.fragments[len(system.mods)-1] + 10
+		a.fragments[len(system.mods)-1] = a.fragments[len(system.mods)-1] + extension
 	}
 	return a
 }
